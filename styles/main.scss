@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+  width: 80%;
+  margin: 2rem auto;
+  position: relative;
+
+  &__container {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    // overflow: scroll;
+    scroll-behavior: smooth;
+
+    img {
+        flex: 1 0 100%;
+        width: 100%;
+        height: 100%;
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    padding: 10px 12px;
+    left: 50%;
+    bottom: 2%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.34);
+    border-radius: 6px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.4px);
+    -webkit-backdrop-filter: blur(8.4px);
+
+    .indicator-btn {
+        border: none;
+        cursor: pointer;
+        height: 12px;
+        width: 12px;
+        background: #ccc;
+        border-radius: 50%;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            height: 18px;
+            width: 18px;
+        }
+    }
+
+    .active {
+        background-color: #000;
+    }
+  }
+
+  &__btn {
+    background: none;
+    font-size: 6rem;
+    font-weight: 600;
+    border: none;
+    color: #000;
+    z-index: 99999;
+  }
+
+  .btn-prev,
+  .btn-next {
+    position: absolute;
+    padding: 0 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &:hover {
+      /* From https://css.glass */
+      background: rgba(255, 255, 255, 0.34);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8.4px);
+      -webkit-backdrop-filter: blur(8.4px);
+    }
+  }
+
+  .btn-prev {
+    left: 2%;
+  }
+  .btn-next {
+    right: 2%;
+  }
+}
+
+@media (max-width: 420px) {
+    .carousel {
+        width: 95%;
+        &__container {
+            height: 500px;
+        }
+        &__btn {
+            display: none;
+        }
+
+        &__indicator {
+            .indicator-btn {
+                 &:hover {
+                    height: 12px;
+                    width: 12px;
+                 }
+            }
+        }
+    }
+}
